@@ -31,7 +31,7 @@ class Livro(Base):
     autor_id: Mapped[int] = mapped_column(ForeignKey("autores.id"))
 
     autor: Mapped["Autor"] = relationship(back_populates="livros")
-    leitores: Mapped["Leitor"] = relationship(secondary=tabela_associativa, back_populates="livros")
+    leitores: Mapped[List["Leitor"]] = relationship(secondary=tabela_associativa, back_populates="livros")
 
 class Leitor(Base):
 
