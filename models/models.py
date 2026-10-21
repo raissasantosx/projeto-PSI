@@ -41,3 +41,10 @@ class Leitor(Base):
     nome: Mapped[str] = mapped_column(String(80))
 
     livros: Mapped[List["Livro"]] = relationship(secondary=tabela_associativa, back_populates="leitores")
+
+class Usuario(Base):
+    __tablename__ = "usuarios"
+
+    id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
+    login: Mapped[str] = mapped_column(String(80), unique=True)
+    senha: Mapped[str] = mapped_column(String(200))
