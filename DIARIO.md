@@ -21,3 +21,9 @@ O que foi feito: Implementação das rotas do CRUD do módulo de Livros (listar,
 Dificuldade encontrada: Organização do envio de dados via formulários, gerenciamento da sessão do usuário autenticado e alterações no banco.
 Como resolvi: Resgatei os campos com request.form.get(), utilizei flask_session para manter o usuário logado e apliquei session.commit() para salvar os dados no SQLAlchemy.
 Próximo passo: Implementação das rotas de cadastro de usuário e do módulo de Autores.
+
+Data: 21/10/2026
+O que foi feito: Implementação das rotas do CRUD do módulo de Autores (listar autores e livros dos autores) e a criação do cadastro de Usuario no controller auth.
+Dificuldade encontrada: Confusão entre a session do flask e a session do SQLAlchemy e em relação ao nome do parâmetro na rota de livros do autor.
+Como resolvi: Separando as sessões nas importações (database import para banco de dados e flask import para o usuário), e ajuste no parâmetro da rota.
+Próximo passo:  -
