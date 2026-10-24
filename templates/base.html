@@ -3,15 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% block title %}{% endblock %}
+    <link rel="stylesheet" href="{{url_for('static', filename='css/globals.css')}}">
+    {% block css %}{% endblock %}
+    <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
-    <nav>
-        <a href="{{ url_for('index') }}">Início</a>
-        <a href="{{ url_for('cadastro')}}">Cadastro</a>
-        <a href="{{ url_for('login')}}">Login</a>
-        <a href="{{ url_for('logout')}}"></a>
-    </nav>
-    {%block conteudo %}{% endblock %}
+    <header>
+        <img src="" alt="Logo">
+        <nav>
+            <a href="{{ url_for('index') }}">Início</a>
+            <a href="{{ url_for('auth.cadastrar_usuario')}}">Cadastro</a>
+            <a href="{{ url_for('auth.login')}}">Login</a>
+            <a href="{{ url_for('auth.logout')}}">Sair</a>
+        </nav>
+    </header>
+    {% block conteudo %}{% endblock %}
 </body>
 </html>

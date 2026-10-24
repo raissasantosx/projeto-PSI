@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %} Página Inicial {% endblock %}
+
+{% block conteudo %}
+<main>
+    <section id="inicio">
+        <div>
+            <h3>Você merece um</h3>
+            <h1>Site para organizar suas leituras</h1>
+            <p>Utilize nossa plataforma e cadastre livros, autores e muito mais! Nela você consegue manter suas leituras todas em um só lugar!</p>
+            <a href="{{url_for('auth.login')}}">Entre na plataforma</a>
+        </div>
+    </section>
+</main>
+{% endblock %}

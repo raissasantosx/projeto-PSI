@@ -1,1 +1,23 @@
 {% extends "base.html" %}
+
+{% block css %} <link rel="stylesheet" href="{{ url_for('auth.static', filename='style.css')}}"> {% endblock %}
+{% block title %} Login {% endblock %}
+
+{% block conteudo %}
+<main>
+    <section id="section1">
+        <h1>Ainda não possui uma conta?</h1>
+        <p>Realize seu cadastro na plataforma!</p>
+        <a class="btn" href="{{url_for('auth.cadastrar_usuario')}}">Cadastrar</a>
+    </section>
+    <section id="section2">
+        <h1>Fazer Login</h1>
+        <p>Use seus dados pessoais para entrar na sua conta.</p>
+        <form action="{{url_for('auth.login')}}" method="post">
+            <input type="email" name="login" placeholder="Insira seu email">
+            <input type="password" name="senha" placeholder="Insira sua senha">
+            <button class="btn">Login</button>
+        </form>
+    </section>
+</main>
+{% endblock %}
