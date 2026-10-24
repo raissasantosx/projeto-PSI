@@ -9,5 +9,4 @@ engine = create_engine("sqlite:///biblioteca.db", echo=False)
 def criar_banco():
     Base.metadata.create_all(bind=engine)
 
-def nova_sessao():
-    return Session(bind=engine)
+session = Session(bind=engine)

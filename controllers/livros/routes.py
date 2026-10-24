@@ -1,7 +1,7 @@
 from flask import request, redirect, url_for, render_template, flash
 from controllers.livros import livros_bp
 from database import session
-from models import Livro, Autor, Leitor
+from models.models import Livro, Autor, Leitor
 
 @livros_bp.route('/listar_livros')
 def listar_livros():
@@ -22,7 +22,7 @@ def cadastrar_livro():
             return redirect(url_for('livros.listar_livros'))
 
     autores = session.query(Autor).all()
-    return render_template('livros/cadastrar_livro.html', autores=autores)
+    return render_template('livros/cadastro_livro.html', autores=autores)
 
 @livros_bp.route('/editar_livro/<int:id_livro>', methods=['POST', 'GET'])
 def editar_livro(id_livro):

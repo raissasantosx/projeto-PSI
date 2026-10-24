@@ -2,7 +2,7 @@ from flask import request, redirect, url_for, render_template, flash, session as
 from werkzeug.security import generate_password_hash, check_password_hash
 from controllers.auth import auth_bp
 from database import session
-from models import Usuario
+from models.models import Usuario
 
 @auth_bp.route('/cadastro', methods=['POST', 'GET'])
 def cadastrar_usuario():
