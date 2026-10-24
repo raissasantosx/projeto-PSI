@@ -27,3 +27,9 @@ O que foi feito: Implementação das rotas do CRUD do módulo de Autores (listar
 Dificuldade encontrada: Confusão entre a session do flask e a session do SQLAlchemy e em relação ao nome do parâmetro na rota de livros do autor.
 Como resolvi: Separando as sessões nas importações (database import para banco de dados e flask import para o usuário), e ajuste no parâmetro da rota.
 Próximo passo:  -
+
+Data: 24/10/2026
+O que foi feito: Adição do HTML e CSS das páginas de início, cadastro, login e cadastro de livros.
+Dificuldade encontrada: Dificuldade para acessar o css específico de cada blueprint.
+Como resolvi: Adicionei o static_folder nos arquivos init.py dos blueprints e acessei eles por meio do blueprint.
+Próximo passo: Fazer o HTML e o CSS das páginas de listagem de livros, autores e livros do autor.
