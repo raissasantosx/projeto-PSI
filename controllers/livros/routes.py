@@ -1,7 +1,8 @@
 from flask import request, redirect, url_for, render_template, flash
 from controllers.livros import livros_bp
 from database import session
-from models.models import Livro, Autor, Leitor
+from sqlalchemy import insert
+from models.models import Livro, Autor, Leitor, tabela_associativa
 
 @livros_bp.route('/listar_livros')
 def listar_livros():
@@ -23,6 +24,28 @@ def cadastrar_livro():
 
     autores = session.query(Autor).all()
     return render_template('livros/cadastro_livro.html', autores=autores)
+
+@livros_bp.route('/emprestar_livro', methods=['POST', 'GET'])
+def emprestar_livro():
+    if request.method == 'POST':
+        livro_id = request.form.get('livro_id')
+        leitor_id = request.form.get('leitor_id')
+
+        if leitor_id and livro_id:
+            livro = session.query(Livro).get(livro_id)
+            leitor = session.query(Leitor).get(leitor_id)
+            if leitor not in livro.leitores:
+                stmt = insert(tabela_associativa).values(livro_id=livro_id, leitor_id=leitor_id)
+                session.execute(stmt)
+                session.commit()
+                return redirect(url_for('leitores.livros_emprestados', leitor_id=leitor.id))
+
+            flash('O leitor já emprestou esse livro')
+            return redirect(url_for('livros.emprestar_livro'))
+
+    leitores = session.query(Leitor).all()
+    livros = session.query(Livro).all()
+    return render_template('livros/emprestar_livro.html', leitores=leitores, livros=livros)
 
 @livros_bp.route('/editar_livro/<int:id_livro>', methods=['POST', 'GET'])
 def editar_livro(id_livro):
@@ -50,3 +73,13 @@ def remover_livro(id_livro):
         session.delete(livro)
         session.commit()
     return redirect(url_for('livros.listar_livros'))
+
+@livros_bp.route('/leitores_do_livro/<int:livro_id>')
+def leitores_do_livro(livro_id):
+    livro = session.query(Livro).get(livro_id)
+    if not livro:
+        flash("Livro não encontrado")
+        return redirect(url_for('livros.listar_livros'))
+    leitores = livro.leitores
+
+    return render_template('livros/leitores_do_livro.html', leitores=leitores, livro=livro)

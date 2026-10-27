@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block css %} <link rel="stylesheet" href="{{ url_for('leitores.static', filename='css/style.css')}}"> {% endblock %}
+{% block title %} Editar Leitor {% endblock %}
+
+{% block conteudo %}
+<main>
+    <section id="section1"></section>
+    <section id="section2">
+        <h1>Editar leitor</h1>
+        <p>Mude as informações que desejar sobre o leitor:</p>
+        <form action="{{url_for('leitores.editar_leitor', leitor_id=leitor.id)}}" method="post">
+            <input type="text" name="nome" placeholder="Nome">
+            <button class="btn">Editar leitor</button>
+        </form>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul class="flashes">
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+    </section>
+</main>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block css %} <link rel="stylesheet" href="{{ url_for('leitores.static', filename='css/style.css')}}"> {% endblock %}
+{% block title %} Listar leitores {% endblock %}
+
+{% block conteudo %}
+<main>
+    
+    <section id="leitores">
+        {% if leitores %}
+        <h1>Leitores cadastrados</h1>
+            {% for leitor in leitores %}
+                <div class="leitor">
+                    <h3>{{leitor.nome}}</h3>
+                    <div>
+                        <a href="{{url_for('leitores.livros_emprestados', leitor_id=leitor.id)}}">Livros emprestados</a>
+                        <a href="{{url_for('leitores.excluir_leitor', leitor_id=leitor.id)}}">Remover leitor</a>
+                        <a href="{{url_for('leitores.editar_leitor', leitor_id=leitor.id)}}">Editar leitor</a>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>Nenhum leitor cadastrado.</p>
+        {% endif %}
+        <a href="{{url_for('leitores.cadastrar_leitor')}}">Cadastrar leitor</a>
+        <a href="{{url_for('livros.listar_livros')}}">Ver livros cadastrados</a>
+    </section>
+    
+</main>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block css %} <link rel="stylesheet" href="{{ url_for('livros.static', filename='css/style.css')}}"> {% endblock %}
+{% block title %} Empréstimo Livro {% endblock %}
+
+{% block conteudo %}
+<main>
+    <section id="section1"></section>
+    <section id="section2">
+        <h1>Emprestar livro</h1>
+        <p>Preencha o seguinte sobre o empréstimo.</p>
+        <form action="{{url_for('livros.emprestar_livro')}}" method="post">
+            <select name="leitor_id">
+                <option value="leitor_id">Selecione o leitor</option>
+                {% for leitor in leitores %}
+                    <option value={{leitor.id}}>{{leitor.nome}}</option>
+                {% endfor %}
+            </select>
+            <select name="livro_id">
+                <option value="">Selecione o livro</option>
+                {% for livro in livros %}
+                    <option value={{livro.id}}>{{livro.titulo}}</option>
+                {% endfor %}
+            </select>
+            <button class="btn">Emprestar livro</button>
+        </form>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul class="flashes">
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+    </section>
+</main>
+{% endblock %}
