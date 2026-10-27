@@ -45,3 +45,9 @@ O que foi feito: Adição do HTML e CSS das páginas de livros, autores, ediçã
 Dificuldade encontrada: Nenhuma dificuldade encontrada.
 Como resolvi: Nenhuma dificuldade encontrada.
 Próximo passo: Ver se precisa mudar o sistema de cadastro de livros e autores para não permitir a adição de um mesmo cadastro.
+
+Data: 26/10/2026
+O que foi feito: Blueprint de leitores e função de empréstimo + páginas de leitor e livros emprestados.
+Dificuldade encontrada: Fazer a associação dos livros com os leitores (adição no banco).
+Como resolvi: Pesquisei e descobri que deveria utilizar o insert para fazer a associação dos dois.
+Próximo passo: Fazer a devolução de um livro.
