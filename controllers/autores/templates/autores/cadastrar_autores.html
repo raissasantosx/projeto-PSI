@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block css %} <link rel="stylesheet" href="{{ url_for('autores.static', filename='css/style.css')}}"> {% endblock %}
+{% block title %} Cadastro Autor {% endblock %}
+
+{% block conteudo %}
+<main>
+    <section id="section1"></section>
+    <section id="section2">
+        <h1>Cadastrar autor</h1>
+        <p>Preencha o seguinte sobre o autor.</p>
+        <form action="{{url_for('autores.cadastrar_autores')}}" method="post">
+            <input type="text" name="nome" placeholder="Nome">
+            <input type="text" name="pais" placeholder="País">
+            <button class="btn">Cadastrar autor</button>
+        </form>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul class="flashes">
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+    </section>
+</main>
+{% endblock %}

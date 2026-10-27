@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block css %} <link rel="stylesheet" href="{{ url_for('livros.static', filename='css/style.css')}}"> {% endblock %}
+{% block title %} Livros {% endblock %}
+
+{% block conteudo %}
+<main>
+    <section id="livros">
+        <h1>Livros cadastrados</h1>
+        {% if livros %}
+            {% for livro in livros %}
+                <div class="livro">
+                    <h3>{{livro.titulo}}</h3>
+                    <h4><b>Ano de publicação:</b> {{livro.ano}}</h4>
+                    <h4>{{livro.autor.nome}}</h4>
+                    <div>
+                        <a href="{{url_for('livros.remover_livro', id_livro=livro.id)}}">Remover livro</a>
+                        <a href="{{url_for('livros.editar_livro', id_livro=livro.id)}}">Editar livro</a>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>Nenhum livro cadastrado.</p>
+        {% endif %}
+        <a href="{{url_for('livros.cadastrar_livro')}}">Cadastrar livros</a>
+        <a href="{{url_for('autores.listar_autores')}}">Ver autores cadastrados</a>
+    </section>
+    
+</main>
+{% endblock %}

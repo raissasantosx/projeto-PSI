@@ -17,6 +17,57 @@ section {
     gap: 30px;
 }
 
+#livros {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    width: 100%;
+    gap: 30px;
+    margin-top: 350px;
+}
+
+.livro {
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    background-color: rgb(214, 174, 251);
+    flex-direction: column;
+    color: black;
+    padding: 20px;
+    border-radius: 20px;
+    width: 80%;
+    gap: 10px;
+}
+
+.livro div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.livro h3 {
+    font-size: 32px;
+}
+
+.livro h4 {
+    font-size: 24px;
+}
+
+.livro a {
+    background-color: rgb(51, 51, 138);
+    font-size: 24px;
+    color: white;
+    border: none;
+    text-decoration: none;
+    border-radius: 40px;
+    padding: 15px;
+    width: 50%;
+    text-align: center;
+}
+
 section h1 {
     font-size: 48px;
 }
@@ -58,11 +109,8 @@ form input:focus {
 }
 
 #section1 {
-    display: flex;
-    align-items: center;
-    width: 50%;
-    height: 100%;
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(6, 2, 59, 0.6)), url("../images/books.jpg");
     background-repeat: no-repeat;
     background-size: cover;
+    color: white;
 }
