@@ -1,7 +1,7 @@
 from flask import request, redirect, url_for, render_template, flash
 from database import session
 from controllers.autores import autores_bp
-from models.models import Autor
+from models.models import Autor, Livro
 
 @autores_bp.route('/cadastrar_autores', methods = ['POST', 'GET'])
 def cadastrar_autores():
@@ -31,8 +31,9 @@ def livros_do_autor(autor_id):
     if not autor:
         flash("Autor não encontrado")
         return redirect(url_for('autores.listar_autores'))
+    livros = autor.livros
 
-    return render_template('autores/livros_do_autor.html', autor=autor)
+    return render_template('autores/livros_do_autor.html', autor=autor, livros=livros)
 
 @autores_bp.route('/editar_autor/<int:autor_id>', methods = ['POST', 'GET'])
 def editar_autor(autor_id):
@@ -41,20 +42,20 @@ def editar_autor(autor_id):
         return redirect(url_for('autores.listar_autores'))
 
     if request.method == 'POST':
-         nome = request.form.get('nome')
-         pais = request.form.get('pais')
+        nome = request.form.get('nome')
+        pais = request.form.get('pais')
 
-         if nome and pais:
-             autor.nome = nome
-             autor.pais = pais
-             session.commit()
-             return redirect(url_for('autores.listar_autores'))
+        if nome and pais:
+            autor.nome = nome
+            autor.pais = pais
+            session.commit()
+            return redirect(url_for('autores.listar_autores'))
 
-         flash('Preencha os campos!')
+        flash('Preencha os campos!')
 
-         return render_template('autores/editar_autor.html', autor=autor)
+    return render_template('autores/editar_autor.html', autor=autor)
 
-@autores_bp.route('/excluir_autor/<int:autor_id>', methods = ['POST'])
+@autores_bp.route('/excluir_autor/<int:autor_id>')
 def excluir_autor(autor_id):
     autor = session.query(Autor).get(autor_id)
     if autor:
