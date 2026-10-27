@@ -39,3 +39,9 @@ O que foi feito: Adição das rotas de cadastrar autor, editar e excluir autor.
 Dificuldade encontrada: Obter as informações inseridas pelo usuário e validar os campos.
 Como resolvi: Utilizando request.form.get para pegar as informações e utilizando if, if not e and para fazer a validação dos campos.
 Próximo passo: Fazer o HTML e o CSS das páginas de listagem de livros, autores e livros do autor.
+
+Data: 26/10/2026
+O que foi feito: Adição do HTML e CSS das páginas de livros, autores, edição de livros e autores, index.
+Dificuldade encontrada: Nenhuma dificuldade encontrada.
+Como resolvi: Nenhuma dificuldade encontrada.
+Próximo passo: Ver se precisa mudar o sistema de cadastro de livros e autores para não permitir a adição de um mesmo cadastro.
