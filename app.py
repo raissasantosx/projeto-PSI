@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, session as flask_session
 from database import criar_banco
 from controllers.auth import auth_bp
 from controllers.livros import livros_bp
@@ -15,4 +15,5 @@ criar_banco()
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    usuario = flask_session['usuario_login']
+    return render_template('index.html', usuario=usuario)

@@ -4,13 +4,37 @@
 
 {% block conteudo %}
 <main>
-    <section id="inicio">
+    {% if usuario %}
         <div>
-            <h3>Você merece um</h3>
-            <h1>Site para organizar suas leituras</h1>
-            <p>Utilize nossa plataforma e cadastre livros, autores e muito mais! Nela você consegue manter suas leituras todas em um só lugar!</p>
-            <a href="{{url_for('auth.login')}}">Entre na plataforma</a>
+            <div>
+                <h3>Acesse</h3>
+                <h1>Livros cadastrados</h1>
+                <a href="{{url_for('livros.listar_livros')}}">Seus livros</a>
+                <br>
+                <h3>Acesse</h3>
+                <h1>Autores cadastrados</h1>
+                <a href="{{url_for('autores.listar_autores')}}">Seus autores</a>
+            </div>
+            <div>
+                <h3>Cadastre</h3>
+                <h1>Um novo livro</h1>
+                <a href="{{url_for('livros.cadastrar_livro')}}">Cadastrar</a>
+                <br>
+                <h3>Cadastre</h3>
+                <h1>Um novo autor</h1>
+                <a href="{{url_for('autores.cadastrar_autores')}}">Cadastrar</a>
+            </div>
         </div>
-    </section>
+    {% endif %}
+    {% if not usuario %}
+        <section id="inicio">
+            <div>
+                <h3>Você merece um</h3>
+                <h1>Site para organizar suas leituras</h1>
+                <p>Utilize nossa plataforma e cadastre livros, autores e muito mais! Nela você consegue manter suas leituras todas em um só lugar!</p>
+                <a href="{{url_for('auth.login')}}">Entre na plataforma</a>
+            </div>
+        </section>
+    {% endif %}
 </main>
 {% endblock %}
