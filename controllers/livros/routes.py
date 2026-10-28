@@ -16,11 +16,22 @@ def cadastrar_livro():
         ano = request.form.get('ano')
         autor_id = request.form.get('autor_id')
 
-        if titulo and ano and autor_id:
-            novo_livro = Livro(titulo=titulo, ano=int(ano), autor_id=int(autor_id))
-            session.add(novo_livro)
-            session.commit()
-            return redirect(url_for('livros.listar_livros'))
+        if not titulo or not ano or not autor_id:
+            flash('Preencha todos os campos!')
+            autores = session.query(Autor).all()
+            return render_template('livros/cadastro_livro.html', autores=autores)
+        
+        livro_cadastrado = session.query(Livro).filter_by(titulo=titulo, autor_id=int(autor_id)).first()
+        if livro_cadastrado:
+             flash('Este livro já está cadastrado!')
+             autores = session.query(Autor).all()
+             return render_template('livros/cadastro_livro.html', autores=autores)
+      
+        
+        novo_livro = Livro(titulo=titulo, ano=int(ano), autor_id=int(autor_id))
+        session.add(novo_livro)
+        session.commit()
+        return redirect(url_for('livros.listar_livros'))
 
     autores = session.query(Autor).all()
     return render_template('livros/cadastro_livro.html', autores=autores)
