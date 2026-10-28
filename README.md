@@ -21,8 +21,8 @@ O Sistema possui módulos de Autor, Livro e Leitores
 4. **Usuario**: Representa os acessos ao sistema para autenticação.
 
 ## Relacionamentos
-- 
-- 
+1:N -
+N:N -
 
 ## Instruções para Executar o Sistema
 1. Criar e ativar o ambiente virtual:
@@ -32,13 +32,18 @@ O Sistema possui módulos de Autor, Livro e Leitores
    env\Scripts\activate
 
 ## Principais dificuldades encontradas
+Na verificação do autor para impedir que ele fizesse o cadastro novamente; 
+Na logica da tabela associativa; 
+No erro de pegar o id do leitor e do livro;
 
 ## Declaração de autoria
-
-Declaração de autoria:
 Declaro que desenvolvi este projeto compreendendo o código entregue e que sou
 capaz de explicar e modificar suas partes principais.
 Uso de IA:
 [ ] Não utilizei IA generativa.
-[ ] Utilizei IA generativa e descrevo abaixo onde e como foi utilizada.
+[X] Utilizei IA generativa e descrevo abaixo onde e como foi utilizada.
 Descrição do uso, se houver:
+Foi utilizado como auxilio para tirar dúvidas, como por exemplo: 
+Na verificação do autor para impedir que ele fizesse o cadastro novamente; 
+Na logica da tabela associativa; 
+No erro de pegar o id do leitor e do livro; 
