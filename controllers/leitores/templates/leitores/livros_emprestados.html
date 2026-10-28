@@ -13,13 +13,13 @@
                     <h3>{{livro.titulo}}</h3>
                     <h4><b>Ano de publicação:</b> {{livro.ano}}</h4>
                     <h4>{{livro.autor.nome}}</h4>
-                    
+                    <a href="{{ url_for('livros.devolver_livro', id_livro=livro.id, id_leitor=leitor.id)}}">Devolver livro</a>
                 </div>
             {% endfor %}
         {% else %}
             <p>Nenhum livro emprestado por {{leitor.nome}}.</p>
         {% endif %}
-        <a href="{{url_for('livros.emprestar_livro')}}">Emprestar livros</a>
+        <a href="{{url_for('livros.emprestar_livro')}}">Emprestar livros</a>  
         <a href="{{url_for('livros.cadastrar_livro')}}">Cadastrar livros</a>
         <a href="{{url_for('autores.listar_autores')}}">Ver autores cadastrados</a>
     </section>
