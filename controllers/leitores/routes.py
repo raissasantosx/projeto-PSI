@@ -1,4 +1,4 @@
-from flask import request, redirect, url_for, render_template, flash
+from flask import request, redirect, url_for, render_template, flash, session as flask_session
 from database import session
 from controllers.leitores import leitores_bp
 from models.models import Autor, Livro, Leitor
@@ -11,7 +11,9 @@ def cadastrar_leitor():
        if not nome:
            flash('Preencha todos os campos!')
            return render_template('leitores/cadastrar_leitor.html')
-       n_leitor = Leitor(nome=nome)
+
+       usuario_id = flask_session['usuario_id']
+       n_leitor = Leitor(nome=nome, usuario_id=int(usuario_id))
        session.add(n_leitor)
        session.commit()
 
@@ -23,6 +25,12 @@ def cadastrar_leitor():
 def listar_leitores():
     leitores = session.query(Leitor).all()
     return render_template('leitores/listar_leitores.html', leitores=leitores)
+
+@leitores_bp.route('/leitores_do_usuario')
+def listar_leitores_do_usuario():
+    usuario_id = flask_session['usuario_id']
+    leitores = session.query(Leitor).filter_by(usuario_id=usuario_id).all()
+    return render_template('leitores/listar_leitores.html', leitores=leitores, usuario=usuario_id)
 
 @leitores_bp.route('/livros_do_leitor/<int:leitor_id>')
 def livros_emprestados(leitor_id):

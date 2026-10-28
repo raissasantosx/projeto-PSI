@@ -7,8 +7,12 @@
 <main>
     
     <section id="autores">
+        {% if usuario %}
+                <h1>Autores cadastrados por você</h1>
+        {% else %}
+            <h1>Autores cadastrados</h1>
+        {% endif %}
         {% if autores %}
-        <h1>Autores cadastrados</h1>
             {% for autor in autores %}
                 <div class="autor">
                     <h3>{{autor.nome}}</h3>
@@ -23,8 +27,14 @@
         {% else %}
             <p>Nenhum autor cadastrado.</p>
         {% endif %}
-        <a href="{{url_for('autores.cadastrar_autores')}}">Cadastrar autor</a>
-        <a href="{{url_for('livros.listar_livros')}}">Ver livros cadastrados</a>
+
+        {% if usuario %}
+            <a href="{{url_for('autores.cadastrar_autores')}}">Cadastrar autor</a>
+            <a href="{{url_for('autores.listar_autores')}}">Ver todos os autores</a>
+        {% else %}
+            <a href="{{url_for('autores.cadastrar_autores')}}">Cadastrar autor</a>
+            <a href="{{url_for('autores.listar_autores_do_usuario')}}">Ver autores cadastrados por você</a>
+        {% endif %}
     </section>
     
 </main>

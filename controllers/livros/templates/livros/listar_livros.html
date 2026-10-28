@@ -6,7 +6,11 @@
 {% block conteudo %}
 <main>
     <section id="livros">
-        <h1>Livros cadastrados</h1>
+        {% if usuario %}
+            <h1>Livros cadastrados por você</h1>
+        {% else %}
+            <h1>Livros cadastrados</h1>
+        {% endif %}
         {% if livros %}
             {% for livro in livros %}
                 <div class="livro">
@@ -23,9 +27,15 @@
         {% else %}
             <p>Nenhum livro cadastrado.</p>
         {% endif %}
-        <a href="{{url_for('livros.emprestar_livro')}}">Emprestar livros</a>
-        <a href="{{url_for('livros.cadastrar_livro')}}">Cadastrar livros</a>
-        <a href="{{url_for('autores.listar_autores')}}">Ver autores cadastrados</a>
+        {% if usuario %}
+            <a href="{{url_for('livros.emprestar_livro')}}">Emprestar livros</a>
+            <a href="{{url_for('livros.cadastrar_livro')}}">Cadastrar livros</a>
+            <a href="{{url_for('livros.listar_livros')}}">Ver todos os livros</a>
+        {% else %}
+            <a href="{{url_for('livros.emprestar_livro')}}">Emprestar livros</a>
+            <a href="{{url_for('livros.cadastrar_livro')}}">Cadastrar livros</a>
+            <a href="{{url_for('livros.listar_livros_do_usuario')}}">Livros cadastrados por você</a>
+        {% endif %}
     </section>
     
 </main>

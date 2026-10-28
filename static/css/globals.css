@@ -12,11 +12,31 @@ body {
 header {
     display: flex;
     justify-content: space-between;
-    background-color: rgb(66, 66, 171);
     width: 100%;
-    padding: 30px;
-    padding-inline: 200px;
+    flex-direction: column;
     position: absolute;
+}
+
+header > div {
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(66, 66, 171);
+    padding: 30px 0px 30px 0px;
+    padding-inline: 200px;
+    width: 100%;
+}
+
+header > nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0px 10px 0px;
+    padding-inline: 200px;
+    background-color: rgb(223, 194, 250);
+}
+
+header > nav > a {
+    font-size: 20px;
+    color: rgb(66, 66, 171);
 }
 
 main {
@@ -24,7 +44,18 @@ main {
     width: 100%;
 }
 
-main > div {
+#inicio_logado {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: white;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(6, 2, 59, 0.6)), url("/static/images/library.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#inicio_logado > div {
     display: flex;
     justify-content: space-between ;
     padding-inline: 200px;
@@ -32,7 +63,7 @@ main > div {
     height: 100%;
 }
 
-main > div > div {
+#inicio_logado > div > div {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -42,17 +73,17 @@ main > div > div {
     gap: 10px;
 }
 
-main > div > div > h1 {
+#inicio_logado > div > div > h1 {
     text-align: center;
     font-size: 40px;
 }
 
-main > div > div > h3 {
+#inicio_logado > div > div > h3 {
     font-size: 36px;
     font-weight: normal;
 }
 
-main > div > div > a {
+#inicio_logado > div > div > a {
     background-color: rgb(51, 51, 138);
     font-size: 28px;
     color: white;
@@ -133,4 +164,14 @@ nav a {
 
 ul li {
     font-size: 24px;
+}
+
+section > a:hover, section > div > div > a:hover, form > button:hover {
+    background-color: rgb(43, 7, 109);
+    transition: 0.2s ease;
+    cursor: pointer;
+}
+
+header a:hover {
+    text-decoration: underline;
 }

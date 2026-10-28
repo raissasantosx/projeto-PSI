@@ -5,19 +5,21 @@
 
 {% block conteudo %}
 <main>
-    <h1>Livros de {{autor.nome}}</h1>
-    {% if livros %}
-        {% for livro in livros %}
-            <div class="livro">
-                <h3>{{livro.titulo}}</h3>
-                <h4><b>Ano de publicação:</b> {{livro.ano}}</h4>
-                <h4>{{livro.autor.nome}}</h4>
-            </div>
-        {% endfor %}
-    {% else %}
-        <p>Nenhum livro de {{autor.nome}} cadastrado.</p>
-    {% endif %}
-    <a href="{{url_for('livros.cadastrar_livro')}}">Cadastrar livros</a>
-    <a href="{{url_for('autores.listar_autores')}}">Ver autores cadastrados</a>
+    <section id="livros">
+        <h1>Livros de {{autor.nome}}</h1>
+        {% if livros %}
+            {% for livro in livros %}
+                <div class="livro">
+                    <h3>{{livro.titulo}}</h3>
+                    <h4><b>Ano de publicação:</b> {{livro.ano}}</h4>
+                    <h4>{{livro.autor.nome}}</h4>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>Nenhum livro de {{autor.nome}} cadastrado.</p>
+        {% endif %}
+        <a href="{{url_for('livros.listar_livros_do_usuario')}}">Livros cadastrados por você</a>
+    </section>
+    
 </main>
 {% endblock %}

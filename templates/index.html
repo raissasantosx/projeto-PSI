@@ -5,6 +5,7 @@
 {% block conteudo %}
 <main>
     {% if usuario %}
+    <section id="inicio_logado">
         <div>
             <div>
                 <h3>Acesse</h3>
@@ -18,15 +19,24 @@
             <div>
                 <h3>Cadastre</h3>
                 <h1>Um novo livro</h1>
-                <a href="{{url_for('livros.cadastrar_livro')}}">Cadastrar</a>
+                <a href="{{url_for('livros.cadastrar_livro')}}">Cadastrar livro</a>
                 <br>
                 <h3>Cadastre</h3>
                 <h1>Um novo autor</h1>
-                <a href="{{url_for('autores.cadastrar_autores')}}">Cadastrar</a>
+                <a href="{{url_for('autores.cadastrar_autores')}}">Cadastrar autor</a>
+            </div>
+            <div>
+                <h3>Cadastre</h3>
+                <h1>Um novo leitor</h1>
+                <a href="{{url_for('leitores.cadastrar_leitor')}}">Cadastrar leitor</a>
+                <br>
+                <h3>Realize</h3>
+                <h1>Um novo empréstimo</h1>
+                <a href="{{url_for('livros.emprestar_livro')}}">Emprestar</a>
             </div>
         </div>
-    {% endif %}
-    {% if not usuario %}
+    </section>
+    {% else %}
         <section id="inicio">
             <div>
                 <h3>Você merece um</h3>

@@ -1,4 +1,4 @@
-from flask import request, redirect, url_for, render_template, flash
+from flask import request, redirect, url_for, render_template, flash, session as flask_session
 from controllers.livros import livros_bp
 from database import session
 from sqlalchemy import insert
@@ -6,8 +6,16 @@ from models.models import Livro, Autor, Leitor, tabela_associativa
 
 @livros_bp.route('/listar_livros')
 def listar_livros():
+    usuario_id = flask_session['usuario_id']
+    session.query(Livro).filter_by(usuario_id=usuario_id).all
     livros = session.query(Livro).all()
     return render_template('livros/listar_livros.html', livros=livros)
+
+@livros_bp.route('/livros_do_usuario')
+def listar_livros_do_usuario():
+    usuario_id = flask_session['usuario_id']
+    livros = session.query(Livro).filter_by(usuario_id=usuario_id).all()
+    return render_template('livros/listar_livros.html', livros=livros, usuario=usuario_id)
 
 @livros_bp.route('/cadastrar_livro', methods=['POST', 'GET'])
 def cadastrar_livro():
@@ -26,9 +34,10 @@ def cadastrar_livro():
              flash('Este livro já está cadastrado!')
              autores = session.query(Autor).all()
              return render_template('livros/cadastro_livro.html', autores=autores)
+
       
-        
-        novo_livro = Livro(titulo=titulo, ano=int(ano), autor_id=int(autor_id))
+        usuario_id = flask_session['usuario_id']
+        novo_livro = Livro(titulo=titulo, ano=int(ano), autor_id=int(autor_id), usuario_id=int(usuario_id))
         session.add(novo_livro)
         session.commit()
         return redirect(url_for('livros.listar_livros'))

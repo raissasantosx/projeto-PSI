@@ -18,6 +18,7 @@ class Autor(Base):
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
     nome: Mapped[str] = mapped_column(unique=True)
     pais: Mapped[str]
+    usuario_id: Mapped[int] = mapped_column(ForeignKey("usuarios.id"))
 
     livros: Mapped[List["Livro"]] = relationship(back_populates="autor")
 
@@ -29,6 +30,7 @@ class Livro(Base):
     titulo: Mapped[str]
     ano: Mapped[int]
     autor_id: Mapped[int] = mapped_column(ForeignKey("autores.id"))
+    usuario_id: Mapped[int] = mapped_column(ForeignKey("usuarios.id"))
 
     autor: Mapped["Autor"] = relationship(back_populates="livros")
     leitores: Mapped[List["Leitor"]] = relationship(secondary=tabela_associativa, back_populates="livros")
@@ -39,6 +41,7 @@ class Leitor(Base):
 
     id: Mapped[int] = mapped_column(primary_key=True)
     nome: Mapped[str] = mapped_column(String(80))
+    usuario_id: Mapped[int] = mapped_column(ForeignKey("usuarios.id"))
 
     livros: Mapped[List["Livro"]] = relationship(secondary=tabela_associativa, back_populates="leitores")
 

@@ -1,4 +1,4 @@
-from flask import request, redirect, url_for, render_template, flash
+from flask import request, redirect, url_for, render_template, flash, session as flask_session
 from database import session
 from controllers.autores import autores_bp
 from models.models import Autor, Livro
@@ -17,8 +17,9 @@ def cadastrar_autores():
        if autor_cadastrado:
            flash('Esse autor já está cadastrado.')
            return render_template('autores/cadastrar_autores.html')
-       
-       n_autor = Autor(nome=nome, pais=pais)
+
+       usuario_id = flask_session['usuario_id']
+       n_autor = Autor(nome=nome, pais=pais, usuario_id=int(usuario_id))
        session.add(n_autor)
        session.commit()
 
@@ -30,6 +31,12 @@ def cadastrar_autores():
 def listar_autores():
     autores = session.query(Autor).all()
     return render_template('autores/listar_autores.html', autores=autores)
+
+@autores_bp.route('/autores_do_usuario')
+def listar_autores_do_usuario():
+    usuario_id = flask_session['usuario_id']
+    autores = session.query(Autor).filter_by(usuario_id=usuario_id).all()
+    return render_template('autores/listar_autores.html', autores=autores, usuario=usuario_id)
 
 @autores_bp.route('/livros_do_autor/<int:autor_id>')
 def livros_do_autor(autor_id):
