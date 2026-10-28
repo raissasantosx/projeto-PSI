@@ -9,12 +9,23 @@
 </head>
 <body>
     <header>
-        <h1>SUA ESTANTE DE LIVROS</h1>
+        <div>
+            <h1>SUA ESTANTE DE LIVROS</h1>
+            <nav>
+                <a href="{{ url_for('index') }}">Início</a>
+                <a href="{{ url_for('auth.cadastrar_usuario')}}">Cadastro</a>
+                <a href="{{ url_for('auth.login')}}">Login</a>
+                <a href="{{ url_for('auth.logout')}}">Sair</a>
+            </nav>
+        </div>
         <nav>
-            <a href="{{ url_for('index') }}">Início</a>
-            <a href="{{ url_for('auth.cadastrar_usuario')}}">Cadastro</a>
-            <a href="{{ url_for('auth.login')}}">Login</a>
-            <a href="{{ url_for('auth.logout')}}">Sair</a>
+            <a href="{{ url_for('livros.listar_livros')}}">Livros</a>
+            <a href="{{ url_for('leitores.listar_leitores')}}">Leitores</a>
+            <a href="{{ url_for('autores.listar_autores')}}">Autores</a>
+            <a href="{{ url_for('livros.cadastrar_livro')}}">Cadastrar livro</a>
+            <a href="{{ url_for('leitores.cadastrar_leitor')}}">Cadastrar leitor</a>
+            <a href="{{ url_for('autores.cadastrar_autores')}}">Cadastrar autores</a>
+            <a href="{{ url_for('livros.emprestar_livro')}}">Emprestar livro</a>
         </nav>
     </header>
     {% block conteudo %}{% endblock %}
