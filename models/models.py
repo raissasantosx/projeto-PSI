@@ -16,7 +16,7 @@ class Autor(Base):
     __tablename__ = "autores"
 
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
-    nome: Mapped[str]
+    nome: Mapped[str] = mapped_column(unique=True)
     pais: Mapped[str]
 
     livros: Mapped[List["Livro"]] = relationship(back_populates="autor")
