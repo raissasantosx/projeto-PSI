@@ -67,6 +67,25 @@ def emprestar_livro():
     livros = session.query(Livro).all()
     return render_template('livros/emprestar_livro.html', leitores=leitores, livros=livros)
 
+@livros_bp.route('/devolver_livro/<int:id_livro>/<int:id_leitor>')
+def devolver_livro(id_livro, id_leitor):
+    livro = session.query(Livro).get(id_livro)
+    leitor = session.query(Leitor).get(id_leitor)
+
+    if not livro or not leitor:
+        flash('Livro ou leitor não encontrado.')
+        return redirect(url_for('livros.listar_livros'))
+
+    if leitor in livro.leitores:
+        livro.leitores.remove(leitor)
+        session.commit()
+        flash('Livro devolvido com sucesso!')
+    else:
+        flash('O leitor não possui esse livro emprestado.')
+
+    return redirect(url_for('leitores.livros_emprestados', leitor_id=id_leitor))
+    
+
 @livros_bp.route('/editar_livro/<int:id_livro>', methods=['POST', 'GET'])
 def editar_livro(id_livro):
     livro = session.query(Livro).get(id_livro)

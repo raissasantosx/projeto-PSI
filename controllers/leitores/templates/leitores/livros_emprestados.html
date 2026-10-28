@@ -17,7 +17,7 @@
                     <h3>{{livro.titulo}}</h3>
                     <h4><b>Ano de publicação:</b> {{livro.ano}}</h4>
                     <h4><b>Autor:</b> {{livro.autor.nome}}</h4>
-                    
+                    <a href="{{ url_for('livros.devolver_livro', id_livro=livro.id, id_leitor=leitor.id)}}">Devolver livro</a>
                 </div>
             {% endfor %}
         {% else %}
