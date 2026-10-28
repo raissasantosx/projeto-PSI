@@ -51,3 +51,21 @@ O que foi feito: Blueprint de leitores e função de empréstimo + páginas de l
 Dificuldade encontrada: Fazer a associação dos livros com os leitores (adição no banco).
 Como resolvi: Pesquisei e descobri que deveria utilizar o insert para fazer a associação dos dois.
 Próximo passo: Fazer a devolução de um livro.
+
+Data: 28/10/2026
+O que foi feito: Uma verificação por nome do autor para impedir que o mesmo autor seja cadastrado mais de uma vez e outra verificação para impedir que um mesmo autor seja cadastrado com o mesmo livro. Além das verificações para preencher os campos obrigatórios.
+Dificuldade encontrada: Nenhuma dificuldade encontrada.
+Como resolvi: Nenhuma dificuldade encontrada.
+Próximo passo: Fazer a devolução de um livro.
+
+Data: 28/10/2026
+O que foi feito: Rota de devolução de livro
+Dificuldade encontrada: Nenhuma dificuldade encontrada.
+Como resolvi: Nenhuma dificuldade encontrada.
+Próximo passo: Realizar a relação das tabelas.
+
+Data: 28/10/2026
+O que foi feito: Relação de livros, autores e leitores com usuário e finalização de HTML e CSS.
+Dificuldade encontrada: Nenhuma dificuldade encontrada.
+Como resolvi: Nenhuma dificuldade encontrada.
+Próximo passo: Finalizar o README.
