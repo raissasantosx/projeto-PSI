@@ -12,6 +12,12 @@ def cadastrar_autores():
        if not nome or not pais:
            flash('Preencha todos os campos!')
            return render_template('autores/cadastrar_autores.html')
+       
+       autor_cadastrado = session.query(Autor).filter_by(nome=nome).first()
+       if autor_cadastrado:
+           flash('Esse autor já está cadastrado.')
+           return render_template('autores/cadastrar_autores.html')
+       
        n_autor = Autor(nome=nome, pais=pais)
        session.add(n_autor)
        session.commit()
