@@ -10,9 +10,7 @@ Sistema para gestão de acervo bibliográfico, controle de autores e empréstimo
 - **[RAÍSSA DOS SANTOS MEDEIROS]**: Responsável pela implementação dos módulos Autor, Livro e Leitor, juntamente com os relacionamentos, além da criação da engine e da função criar_banco.
 
 ## Descrição do Sistema
-O Sistema possui módulos de Autor, Livro e Leitores 
-
-
+O Sistema possui módulos de Autor, Livro, Leitor e Autenticação. Permite o cadastro e gerenciamento completo de autores, a vinculação de livros aos seus respectivos autores, o controle de leitores cadastrados e o registro de empréstimos entre leitores e livros através de uma tabela associativa. Conta também com controle de acesso através de autenticação de usuários (login, cadastro e logout). 
 
 ## Entidades do Sistema
 1. **Autor**: Representa o autor responsável pelas obras.
@@ -21,8 +19,8 @@ O Sistema possui módulos de Autor, Livro e Leitores
 4. **Usuario**: Representa os acessos ao sistema para autenticação.
 
 ## Relacionamentos
-1:N -
-N:N -
+- **1:N (Um para Muitos)**: Um Autor pode possuir vários Livros cadastrados, enquanto cada Livro pertence a um único Autor.
+- **N:N (Muitos para Muitos)**: Um Leitor pode pegar emprestado/ler vários Livros, e um Livro pode ser lido por vários Leitores.
 
 ## Instruções para Executar o Sistema
 1. Criar e ativar o ambiente virtual:
