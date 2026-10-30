@@ -23,11 +23,13 @@ O Sistema possui módulos de Autor, Livro, Leitor e Autenticação. Permite o ca
 - **N:N (Muitos para Muitos)**: Um Leitor pode pegar emprestado/ler vários Livros, e um Livro pode ser lido por vários Leitores.
 
 ## Instruções para Executar o Sistema
-1. Criar e ativar o ambiente virtual:
-   ```bash
-   python -m venv env
-   # No Windows:
-   env\Scripts\activate
+1. Criar e ativar o ambiente virtual e executar o sistema:
+```bash
+python -m venv env
+env\Scripts\activate
+pip install -r requirements.txt
+python app.py
+```
 
 ## Principais dificuldades encontradas
 Na verificação do autor para impedir que ele fizesse o cadastro novamente; 
@@ -36,11 +38,14 @@ No erro de pegar o id do leitor e do livro;
 
 ## Declaração de autoria
 Declaro que desenvolvi este projeto compreendendo o código entregue e que sou
-capaz de explicar e modificar suas partes principais.
-Uso de IA:
-[ ] Não utilizei IA generativa.
-[X] Utilizei IA generativa e descrevo abaixo onde e como foi utilizada.
-Descrição do uso, se houver:
+capaz de explicar e modificar suas partes principais. 
+\
+Uso de IA: \
+\
+[ ] Não utilizei IA generativa. \
+[X] Utilizei IA generativa e descrevo abaixo onde e como foi utilizada. \
+\
+Descrição do uso, se houver:\
 Foi utilizado como auxilio para tirar dúvidas, como por exemplo: 
 Na verificação do autor para impedir que ele fizesse o cadastro novamente; 
 Na logica da tabela associativa; 

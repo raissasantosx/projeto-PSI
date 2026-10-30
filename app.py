@@ -22,3 +22,6 @@ def index():
         return render_template('index.html', usuario=None)
     usuario = flask_session['usuario_login']
     return render_template('index.html', usuario=usuario)
+
+if __name__ == '__main__':
+    app.run(debug=True)
