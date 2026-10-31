@@ -5,6 +5,7 @@ from controllers.auth import auth_bp
 from controllers.livros import livros_bp
 from controllers.autores import autores_bp
 from controllers.leitores import leitores_bp
+from seed import popular_banco
 
 app = Flask(__name__)
 app.secret_key = 'chave_secreta'
@@ -15,6 +16,7 @@ app.register_blueprint(autores_bp)
 app.register_blueprint(leitores_bp)
 
 criar_banco()
+# popular_banco(session)
 
 @app.route('/')
 def index():
