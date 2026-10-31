@@ -69,3 +69,9 @@ O que foi feito: Relação de livros, autores e leitores com usuário e finaliza
 Dificuldade encontrada: Nenhuma dificuldade encontrada.
 Como resolvi: Nenhuma dificuldade encontrada.
 Próximo passo: Finalizar o README.
+
+Data: 31/10/2026
+O que foi feito: Função de popular banco criando usuário, livros, leitores e autores.
+Dificuldade encontrada: Nenhuma dificuldade encontrada.
+Como resolvi: Nenhuma dificuldade encontrada.
+Próximo passo: Entrega do projeto.
