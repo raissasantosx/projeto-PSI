@@ -1,11 +1,12 @@
 from models.models import Autor, Livro, Leitor, Usuario
 from sqlalchemy import select
+from werkzeug.security import generate_password_hash
 
 def popular_banco(session):
     if session.scalar(select(Usuario).limit(1)):
         return
     
-    usuario = Usuario(login="admin@admin", senha="123")
+    usuario = Usuario(login="admin@admin", senha=generate_password_hash('123'))
     session.add(usuario)
     session.flush()
 
