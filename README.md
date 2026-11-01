@@ -22,8 +22,11 @@ O Sistema possui módulos de Autor, Livro, Leitor e Autenticação. Permite o ca
 - **1:N (Um para Muitos)**: Um Autor pode possuir vários Livros cadastrados, enquanto cada Livro pertence a um único Autor.
 - **N:N (Muitos para Muitos)**: Um Leitor pode pegar emprestado/ler vários Livros, e um Livro pode ser lido por vários Leitores.
 
+## Instruções para Popular o Banco
+Remover o comentário da linha 19 (#popular_banco()) de app.py e rodar o sistema.
+
 ## Instruções para Executar o Sistema
-1. Criar e ativar o ambiente virtual e executar o sistema:
+1. Criar e ativar o ambiente virtual, baixar as dependências e  executar o sistema:
 ```bash
 python -m venv env
 env\Scripts\activate
@@ -46,7 +49,4 @@ Uso de IA: \
 [X] Utilizei IA generativa e descrevo abaixo onde e como foi utilizada. \
 \
 Descrição do uso, se houver:\
-Foi utilizado como auxilio para tirar dúvidas, como por exemplo: 
-Na verificação do autor para impedir que ele fizesse o cadastro novamente; 
-Na logica da tabela associativa; 
-No erro de pegar o id do leitor e do livro; 
+Foi utilizado como auxilio para tirar dúvidas, como, por exemplo, na verificação do autor, para impedir que ele fizesse o cadastro novamente; na lógica da tabela associativa; no erro de pegar o id do leitor e do livro.
